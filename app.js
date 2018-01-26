@@ -16,8 +16,9 @@ app.get('/count',function (req, res) {
 })
 
 app.get('/check', function (req, res) {
-  check("http://localhost:5000/count", {lato1: 3, lato2: 5}, {area: 15}, 200);
-  res.send("OK");
+  console.log(check("http://localhost:5000/count", {lato1: 3, lato2: 5}, {area: 15}, 200));
+  res.send("OK ma da errore cercando di parsare il json");
+  //res.json(check("http://localhost:5000/count", {lato1: 3, lato2: 5}, {area: 15}, 200));
 })
 
 app.listen(app.get('port'), function() {

@@ -23,21 +23,22 @@ function check(url, invocationParameters,  expectedResultData, expectedResultSta
     .then(function(res){
       console.log("FACENDO LA GET");
       console.log(res.status);
-      var json = JSON.parse(res);
+      //var json = JSON.parse(res);
       //var json = JSON.parse(res.body);
       console.log(res);
 
-      var compare = compareResults(expectedResultData, {area: 15});
+      var compare = compareResults(expectedResultData, res);
 
       const checkResult = { // this is the object you need to set and return
           urlChecked: completeUrl,
-          resultData: null,
+          resultData: res,
           resultStatus: res.status,
           statusTestPassed: (res.status == expectedResultStatus),
           resultDataAsExpected: compare
       };
 
       console.log(checkResult);
+      return checkResult;
 
     })
     .catch(function(err){
